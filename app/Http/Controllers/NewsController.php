@@ -38,6 +38,8 @@ class NewsController extends Controller
         $news->text = $request->text || null;
         $news->img_src = $fullpathtoimg || null;
         $news->save();
+
+        return response()->json([], 204);
     }
 
 }
