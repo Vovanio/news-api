@@ -34,9 +34,9 @@ class NewsController extends Controller
             $fullpathtoimg = env('APP_DOMAIN_STORAGE') . $path;
         }
         $news = News::find($request->id);
-        $news->title = $request->title;
-        $news->text = $request->text;
-        $news->img_src = $fullpathtoimg;
+        $news->title = $request->title || null;
+        $news->text = $request->text || null;
+        $news->img_src = $fullpathtoimg || null;
         $news->save();
     }
 
