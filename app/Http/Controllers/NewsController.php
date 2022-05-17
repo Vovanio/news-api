@@ -26,11 +26,18 @@ class NewsController extends Controller
             ],422);
         }
 
+        $fullpathtoimg = null;
         if($request->has('img')){
             $path = $request->file('img')
             ->store('media/images/uploads', 'public');
 
             $fullpathtoimg = env('APP_DOMAIN_STORAGE') . $path;
         }
+        $news = News::find($request->id);
+        $news->title = $request->title;
+        $news->text = $request->text;
+        $news->img_src = $fullpathtoimg;
+        $news->save();
     }
+
 }
